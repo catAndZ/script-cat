@@ -1,0 +1,38 @@
+// ==UserScript==
+// @name         蓝桥杯答题优化
+// @namespace    https://github.com/catAndZ
+// @version      0.1.0
+// @description  蓝桥杯左右键下一题
+// @author       catandz
+// @match        https://www.lanqiao.cn/courses/*
+// ==/UserScript==
+
+(function () {
+    'use strict';
+    window.onload = function () {
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'ArrowRight') {
+                const overviewPanel = document.querySelector('.overview-panel');
+                const focusedElement = overviewPanel.querySelector('.focus');
+                // 获取 focusedElement 元素的上一个兄弟元素
+
+                const nextElement = focusedElement.nextElementSibling;
+                nextElement.click();
+
+            }
+        });
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'ArrowLeft') {
+                const overviewPanel = document.querySelector('.overview-panel');
+                const focusedElement = overviewPanel.querySelector('.focus');
+
+                // 获取 focusedElement 元素的下一个兄弟元素
+
+                const lastElement = focusedElement.previousElementSibling;
+                lastElement.click();
+
+            }
+        });
+
+    };
+})();
